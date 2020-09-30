@@ -9,6 +9,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+import './index.scss';
+
 export default function HomePage() {
   return (
     <h1>
