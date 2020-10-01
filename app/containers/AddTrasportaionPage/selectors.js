@@ -5,8 +5,7 @@ import { initialState } from './reducer';
  * Direct selector to the addTrasportaionPage state domain
  */
 
-const selectAddTrasportaionPageDomain = state =>
-  state.addTrasportaionPage || initialState;
+const selectAddTrasportaionPageDomain = state => state.addTrasportaionPage || initialState;
 
 /**
  * Other specific selectors
@@ -22,5 +21,15 @@ const makeSelectAddTrasportaionPage = () =>
     substate => substate,
   );
 
-export default makeSelectAddTrasportaionPage;
+const makeSelectTrasportationNumber = () =>
+  createSelector(
+    selectAddTrasportaionPageDomain,
+    addTrasportaionPage => addTrasportaionPage.transportationNumber,
+  );
+
+export {
+  makeSelectAddTrasportaionPage,
+  makeSelectTrasportationNumber,
+};
 export { selectAddTrasportaionPageDomain };
+
