@@ -1,22 +1,26 @@
-/**
- *
- * TrasportationListPage
- *
- */
-
-import React, { memo } from 'react';
+import { createStructuredSelector } from 'reselect';
+import React, {useEffect, memo} from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { compose } from 'redux';
-
 import { useInjectSaga } from 'utils/injectSaga';
+import { useInjectReducer } from 'utils/injectReducer';
+import {loadTransportations} from './actions';
+import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import { makeSelectTrasportationsList, makeSelectLoading, makeSelectError } from './selectors'
 
-export function TrasportationListPage() {
+export function TrasportationListPage( transportaionList, loading, error, onLoadTransportations ) {
+
+  useInjectReducer({ key: 'trasportationListPage', reducer });
   useInjectSaga({ key: 'trasportationListPage', saga });
+  
+  useEffect( ()=> {
+    if( !transportaionList ) onLoadTransportations();
+  }, []);
 
   return (
     <div>
@@ -27,23 +31,34 @@ export function TrasportationListPage() {
           content="Description of TrasportationListPage"
         />
       </Helmet>
+      {loading === true && <div className="loading">loading...</div>}
+      {error && <div className="error">error accured</div>}
       <FormattedMessage {...messages.header} />
     </div>
   );
 }
 
 TrasportationListPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  transportaionList: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  onLoadTransportations: PropTypes.func,
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
 };
+
+const mapStateToProps = createStructuredSelector({
+  transportaionList: makeSelectTrasportationsList(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onLoadTransportations: () => dispatch(loadTransportations()),
   };
 }
 
 const withConnect = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 );
 

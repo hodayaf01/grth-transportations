@@ -1,6 +1,24 @@
 // import { take, call, put, select } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import request from 'utils/request';
+import { LOAD_TRANSPORTATIONS } from './constants';
+import { transpotrationLoaded, transpotrationLoadingError } from './actions';
 
-// Individual exports for testing
-export default function* trasportationListPageSaga() {
-  // See example in containers/HomePage/saga.js
+const baseUrl = "/api";
+
+export function* getTransportations() {
+  
+  const requestURL = `${baseUrl}/transportation/list`;
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const list = yield call(request, requestURL);
+    yield put(transpotrationLoaded(list));
+  } catch (err) {
+    yield put(transpotrationLoadingError(err));
+  }
 }
+export default function* loadTransportationData() {
+  yield (LOAD_TRANSPORTATIONS, getTransportations());
+}
+
