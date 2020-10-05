@@ -1,9 +1,3 @@
-/*
- *
- * AddTrasportaionPage actions
- *
- */
-
 import { DEFAULT_ACTION, CHANGE_TRANSPORTATION_NUMBER } from './constants';
 
 export function defaultAction() {
