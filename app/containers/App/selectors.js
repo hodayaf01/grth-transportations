@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 const selectRouter = state => state.router;
+// const selectGlobal = state => state.global.transportationsList;
 
 const makeSelectLocation = () =>
   createSelector(
@@ -8,4 +9,27 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
-export { makeSelectLocation };
+// const makeSelectTrasportationsList = () =>
+//   createSelector(
+//     selectGlobal,
+//     global => global.transportationsList,
+//   );
+
+// const makeSelectLoading = () =>
+//   createSelector(
+//     selectGlobal,
+//     global.loading,
+//   );
+
+// const makeSelectError = () => 
+//   createSelector(
+//     selectGlobal,
+//     global.error,
+//   );
+
+export { 
+  makeSelectLocation,
+  // makeSelectTrasportationsList,
+  // makeSelectLoading,
+  // makeSelectError,
+};
