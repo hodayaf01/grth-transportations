@@ -7,6 +7,8 @@ import TrasportationListPage from 'containers/TrasportationListPage/Loadable';
 import AddTrasportaionPage from 'containers/AddTrasportaionPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import 'style.scss';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
 export function App() {
 
