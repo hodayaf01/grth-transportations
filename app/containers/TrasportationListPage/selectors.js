@@ -6,7 +6,7 @@ const selectTransportations = state => state.trasportationListPage || initialSta
 const makeSelectTrasportationsList = () =>
   createSelector(
     selectTransportations,
-    trasportationListPage => trasportationListPage.list ? ["aaa"] : ["bbb"],
+    trasportationListPage => trasportationListPage.list ,
   );
 
 const makeSelectLoading = () =>

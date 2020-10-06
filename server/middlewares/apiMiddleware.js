@@ -19,7 +19,6 @@ router.use((req, res, next) => {
 });
 
 router.get('/transportation/list', (req, res) => {
-  console.log('this is list api');
   fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
     res.end(data);
   });

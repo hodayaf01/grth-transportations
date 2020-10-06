@@ -7,9 +7,7 @@ import { transpotrationLoaded, transpotrationLoadingError } from './actions';
 const baseUrl = "/api";
 
 export function* getTransportations() {
-  
   const requestURL = `${baseUrl}/transportation/list`;
-
   try {
     // Call our request helper (see 'utils/request')
     const list = yield call(request, requestURL);
