@@ -7,6 +7,8 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+
+import TransportationTable from '../../components/TtransportationTable'
 import {loadTransportations} from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -17,7 +19,7 @@ export function TrasportationListPage( transportaionList, loading, error, onLoad
 
   useInjectReducer({ key: 'trasportationListPage', reducer });
   useInjectSaga({ key: 'trasportationListPage', saga });
-  
+
   useEffect( ()=> {
     if( !transportaionList ) onLoadTransportations();
   }, []);
@@ -31,9 +33,11 @@ export function TrasportationListPage( transportaionList, loading, error, onLoad
           content="Description of TrasportationListPage"
         />
       </Helmet>
+      <FormattedMessage {...messages.header} />
       {loading === true && <div className="loading">loading...</div>}
       {error && <div className="error">error accured</div>}
-      <FormattedMessage {...messages.header} />
+
+      <TransportationTable list = {transportaionList.transportaionList}/>
     </div>
   );
 }
