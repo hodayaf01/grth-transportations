@@ -24,6 +24,14 @@ router.get('/transportation/list', (req, res) => {
   });
 });
 
+router.get('/getNewTransportationId', (req, res) => {
+  fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
+    const list = JSON.parse(data);
+    const newId = list.length;
+    res.end(JSON.stringify(newId));
+  });
+});
+
 router.get('/get/:id', (req, res) => {
   fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
     const list = JSON.parse(data);
