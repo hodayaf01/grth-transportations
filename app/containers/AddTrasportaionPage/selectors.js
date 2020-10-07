@@ -16,11 +16,24 @@ const makeSelectTrasportationNumber = () =>
     addTrasportaionPage => addTrasportaionPage.transportationNumber,
   );
 
+ const makeSelectNewTrasportationIdError = () =>
+  createSelector(
+    selectAddTrasportaionPageDomain,
+    addTrasportaionPage => addTrasportaionPage.newTransportation.error,
+  );
+
+const makeSelectNewTrasportationId = () =>
+  createSelector(
+    selectAddTrasportaionPageDomain,
+    addTrasportaionPage => addTrasportaionPage.newTransportation.id,
+  );
 
 
 export {
   makeSelectAddTrasportaionPage,
   makeSelectTrasportationNumber,
+  makeSelectNewTrasportationId,
+  makeSelectNewTrasportationIdError,
 };
 export { selectAddTrasportaionPageDomain };
 

@@ -19,4 +19,3 @@ export function* getTransportations() {
 export default function* loadTransportationData() {
   yield (LOAD_TRANSPORTATIONS, getTransportations());
 }
-

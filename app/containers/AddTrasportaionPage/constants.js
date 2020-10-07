@@ -1,3 +1,9 @@
 export const DEFAULT_ACTION = 'app/AddTrasportaionPage/DEFAULT_ACTION';
 
 export const CHANGE_TRANSPORTATION_NUMBER = 'app/AddTrasportaionPage/CHANGE_TRANSPORTATION_NUMBER';
+
+export const GET_NEW_TRANSPORTATION_ID = 'app/AddTrasportaionPage/GET_NEW_TRANSPORTATION_ID';
+
+export const GET_NEW_TRANSPORTATION_ID_SUCCESS = 'app/AddTrasportaionPage/GET_NEW_TRANSPORTATION_ID_SUCCESS';
+
+export const GET_NEW_TRANSPORTATION_ID_ERROR = 'app/AddTrasportaionPage/GET_NEW_TRANSPORTATION_ID_ERROR';
