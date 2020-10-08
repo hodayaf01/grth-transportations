@@ -31,7 +31,9 @@ export function LoginPage({onSubmitConfirmPass, isExistUser}) {
       <h1>enter your password</h1>
       <input type="text" value={pass} onChange={onChangePass}></input>
       <button type="submit" onClick={onConfirm}>confirm</button>
-      <span>{isExistUser}</span>
+      {isExistUser && <span>follow this link :</span>}
+      {!isExistUser && <span>Access Denide</span>}
+
     </div>
   );
 }
@@ -47,7 +49,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmitConfirmPass:(pass) => {console.log(pass); dispatch(getIsExistUser(pass))},
+    onSubmitConfirmPass:(pass) => dispatch(getIsExistUser(pass)),
   };
 }
 

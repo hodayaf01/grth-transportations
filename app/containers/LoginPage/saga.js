@@ -7,13 +7,14 @@ import { getIsExistUserSuccess } from './actions';
 const baseUrl = "/api";
 
 export function* getIsExistUser(action){
+  const data = {pass : action.pass};
   const requestURL = `${baseUrl}/getExistUser`;
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(action.pass)
+    body: JSON.stringify(data),
   };
   try{
     const isExistUser = yield call(request, requestURL, options);
@@ -25,5 +26,5 @@ export function* getIsExistUser(action){
 }
 
 export default function* getIsExistUserSaga(){
-  yield takeEvery (IS_EXIST_USER, getIsExistUser());
+  yield takeEvery (IS_EXIST_USER, getIsExistUser );
 };
