@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-// import * as ReactBootStrap from 'react-bootstrap';
-
+import GoogleMap from '../GoogleMap';
 
 function TransportationTable(props) {
 
@@ -12,6 +11,12 @@ function TransportationTable(props) {
     if (row)
       return "done";
     return "on the way";
+  };
+
+  const handleOnSelect= (row, isSelect) => {
+    if (isSelect) {
+      console.log(row.fromLatitude);
+    }
   };
 
   const columns = [
@@ -44,6 +49,16 @@ function TransportationTable(props) {
       { text: 'All', value: props.list.length }
     ]
   };
+
+  const selectRow = {
+    mode: 'radio',
+    clickToSelect: true,
+    onSelect: handleOnSelect,
+    style: { backgroundColor: '#c8e6c9' }
+  };
+
+  
+
   return (
     <div>
       <BootstrapTable
@@ -51,14 +66,18 @@ function TransportationTable(props) {
         data={props.list}
         columns={columns}
         pagination={paginationFactory(options)}
+        selectRow={ selectRow }
       />
+      <GoogleMap/>
     </div>
   );
 }
 
 TransportationTable.propTypes = {
   list: PropTypes.array,
+  text: PropTypes.object,
 };
 
 
 export default (TransportationTable);
+
