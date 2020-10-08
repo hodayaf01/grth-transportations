@@ -43,15 +43,6 @@ router.post('/getExistUser', (req, res) => {
     
 });
 
-router.get('/get/:id', (req, res) => {
-  fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
-    const list = JSON.parse(data);
-    const { id } = req.params;
-    const item = _getItem(list, id);
-    res.end(JSON.stringify(item));
-  });
-});
-
 router.post('/add', (req, res) => {
   fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
     const list = JSON.parse(data);
@@ -66,6 +57,16 @@ router.post('/add', (req, res) => {
         res.end(data);
       }
     });
+  });
+});
+
+
+router.get('/get/:id', (req, res) => {
+  fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
+    const list = JSON.parse(data);
+    const { id } = req.params;
+    const item = _getItem(list, id);
+    res.end(JSON.stringify(item));
   });
 });
 
@@ -87,7 +88,7 @@ router.post('/update', (req, res) => {
 });
 
 router.post('/delete/:id', (req, res) => {
-  fs.readFile(jsonUserPath, 'utf8', (err, data) => {
+  fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
     const list = JSON.parse(data);
     const { id } = req.params;
     const newList = _deleteItem(list, id);

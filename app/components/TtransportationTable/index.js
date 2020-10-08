@@ -1,21 +1,44 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import PropTypes from 'prop-types';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import Geocode from "react-geocode";
 import GoogleMap from '../GoogleMap';
 
 function TransportationTable(props) {
 
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [selectedAddress, setSelectedAddress] = useState(null);
+
   function statusFormatter(row) {
     if (row)
-      return "done";
+      return "delivered";
     return "on the way";
   };
 
   const handleOnSelect= (row, isSelect) => {
     if (isSelect) {
+      setSelectedRow(row);
       console.log(row.fromLatitude);
+    }
+  };
+
+  const showAddress = () => {
+    if(selectedRow!=null){
+      Geocode.setApiKey("AIzaSyBp92tTnTQgEpN230RfIsFcPW73YDyC1sM");
+      Geocode.setLanguage("en");
+      Geocode.setRegion("es");
+      Geocode.enableDebug();
+      Geocode.fromLatLng(selectedRow.fromLatitude, selectedRow.fromLongitude).then(
+        response => {
+          const address = response.results[0].formatted_address;
+          setSelectedAddress(address);
+        },
+        error => {
+          console.error(error);
+        }
+      );
     }
   };
 
@@ -24,10 +47,6 @@ function TransportationTable(props) {
     { dataField: "customerId", text: "Customer Number" },
     { dataField: "name", text: "Name" },
     { dataField: "address", text: "Address" },
-    { dataField: "fromLatitude", text: "From" },
-    { dataField: "fromLongitude", text: "" },
-    { dataField: "toLatitude", text: "To" },
-    { dataField: "toLongitude", text: "" },
     { dataField: "isArrived", text: "Status", formatter: statusFormatter },
   ];
 
@@ -57,17 +76,20 @@ function TransportationTable(props) {
     style: { backgroundColor: '#c8e6c9' }
   };
 
-  
-
   return (
     <div>
-      <BootstrapTable
-        keyField="id"
-        data={props.list}
-        columns={columns}
-        pagination={paginationFactory(options)}
-        selectRow={ selectRow }
-      />
+      <button type='button' onClick={showAddress}>show address</button>
+      {selectedAddress && <div>{selectedAddress}</div>}
+      <div style={{ width: '1000px', border: 'solid black 5px'}}>
+        <BootstrapTable
+          keyField="id"
+          data={props.list}
+          columns={columns}
+          pagination={paginationFactory(options)}
+          selectRow={ selectRow }
+        />
+      </div>
+
       <GoogleMap/>
     </div>
   );

@@ -14,7 +14,7 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 export function App() {
 
   return (
-    <div>
+    <div style={{ marginLeft :'20px'}}>
       <Link to="/">Home</Link><br/>
       <Link to="/transportaionList"> Trasportaion List </Link><br/>
       <Link to="/addTrasportaion"> Add Trasportaion</Link><br/> 

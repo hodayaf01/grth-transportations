@@ -21,7 +21,7 @@ function GoogleMap() {
 
   return(
     <div>
-      <div style={{ height: '1000px', width: '1000px' }}>
+      <div style={{ height: '750px', width: '750px' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDuFlqFYeLdRev7XbwK0GsPSWbrk4E9Xiw" }}
           defaultCenter={center}
