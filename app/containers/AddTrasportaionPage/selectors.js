@@ -16,7 +16,7 @@ const makeSelectTrasportationNumber = () =>
     addTrasportaionPage => addTrasportaionPage.transportationNumber,
   );
 
- const makeSelectNewTrasportationIdError = () =>
+const makeSelectNewTrasportationIdError = () =>
   createSelector(
     selectAddTrasportaionPageDomain,
     addTrasportaionPage => addTrasportaionPage.newTransportation.error,

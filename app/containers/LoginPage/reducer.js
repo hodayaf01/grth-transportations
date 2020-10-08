@@ -1,18 +1,24 @@
-/*
- *
- * LoginPage reducer
- *
- */
+
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { IS_EXIST_USER, IS_EXIST_USER_SUCCESS } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  isExistUser: false,
+  pass: '',
+};
 
-/* eslint-disable default-case, no-param-reassign */
 const loginPageReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, ( draft ) => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case IS_EXIST_USER:
+
+        draft.pass= action.pass;
+        break;
+      case IS_EXIST_USER_SUCCESS:
+
+        draft.isExistUser = action.isExistUser;
+        break;
+      default:
         break;
     }
   });

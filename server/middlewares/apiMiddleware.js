@@ -32,6 +32,17 @@ router.get('/getNewTransportationId', (req, res) => {
   });
 });
 
+router.post('/getExistUser', (req, res) => {
+  fs.readFile(jsonUserPath, 'utf8', (err, data) => {
+    const list = JSON.parse(data);
+    const {pass} = req.body;
+    const user = _getUserByPass(list, pass);
+    if(user) res.end(JSON.stringify(true));
+    else res.end(JSON.stringify(false));
+  });
+    
+});
+
 router.get('/get/:id', (req, res) => {
   fs.readFile(jsonTransportationPath, 'utf8', (err, data) => {
     const list = JSON.parse(data);
@@ -95,6 +106,11 @@ router.post('/delete/:id', (req, res) => {
 // Private functions
 const _getItem = (list, id) => {
   const currentItem = list.find(item => item.id.toString() === id.toString());
+  return currentItem;
+};
+
+const _getUserByPass = (list, pass) => {
+  const currentItem = list.find(user => user.password.toString() === pass.toString());
   return currentItem;
 };
 
