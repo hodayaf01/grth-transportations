@@ -37,7 +37,7 @@ router.post('/getExistUser', (req, res) => {
     const list = JSON.parse(data);
     const {pass} = req.body;
     const user = _getUserByPass(list, pass);
-    if(user) res.end(JSON.stringify(true));
+    if(user) res.end(JSON.stringify(user));
     else res.end(JSON.stringify(false));
   });
     

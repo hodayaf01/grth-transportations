@@ -1,43 +1,36 @@
 [
     {
       "id": 0,
-      "isActive": false,
       "name": "Maritza Flowers",
       "password": 73057
     },
     {
       "id": 1,
-      "isActive": true,
       "name": "Beth Gardner",
       "password": 42858
     },
     {
       "id": 2,
-      "isActive": true,
       "name": "Christa Baldwin",
       "password": 38271
     },
     {
       "id": 3,
-      "isActive": true,
       "name": "Howell Clarke",
       "password": 35818
     },
     {
       "id": 4,
-      "isActive": false,
       "name": "Kris Fox",
       "password": 52731
     },
     {
       "id": 5,
-      "isActive": true,
       "name": "Frye Coffey",
       "password": 52028
     },
     {
       "id": 6,
-      "isActive": false,
       "name": "Leonard Hebert",
       "password": 34822
     }
