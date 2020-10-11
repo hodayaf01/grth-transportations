@@ -1,16 +1,5 @@
-/*
- *
- * LoginPage actions
- *
- */
 
-import { DEFAULT_ACTION, IS_EXIST_USER, IS_EXIST_USER_SUCCESS } from './constants';
-
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+import { IS_EXIST_USER, IS_EXIST_USER_SUCCESS } from './constants';
 
 export function getIsExistUser(pass) {
   return {
@@ -19,9 +8,9 @@ export function getIsExistUser(pass) {
   };
 }
 
-export function getIsExistUserSuccess(isExistUser) {
+export function getIsExistUserSuccess(user) {
   return {
     type: IS_EXIST_USER_SUCCESS,
-    isExistUser
+    user
   };
 }
