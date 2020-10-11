@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import Geocode from "react-geocode";
-import GoogleMap from '../GoogleMap';
+import GoogleMapForTransportation from '../GoogleMap';
 
 function TransportationTable(props) {
 
@@ -16,6 +16,19 @@ function TransportationTable(props) {
       return "delivered";
     return "on the way";
   };
+
+  const updatedList = [];
+  Array.prototype.forEach.call(props.list, item => {
+    const newItem = {
+      id: item.id,
+      customerId: item.customerId,
+      name: item.name,
+      from: `${item.fromLatitude}  ${item.fromLongitude}` ,
+      to: `${item.toLatitude}  ${item.toLongitude}`,
+      isArrived: item.isArrived
+    }
+    updatedList.push(newItem);
+  })
 
   const handleOnSelect= (row, isSelect) => {
     if (isSelect) {
@@ -46,7 +59,8 @@ function TransportationTable(props) {
     { dataField: "id", text: "Transportation Number", align: 'center' },
     { dataField: "customerId", text: "Customer Number" },
     { dataField: "name", text: "Name" },
-    { dataField: "address", text: "Address" },
+    { dataField: "from", text: "From" },
+    { dataField: "to", text: "To" },
     { dataField: "isArrived", text: "Status", formatter: statusFormatter },
   ];
 
@@ -65,7 +79,6 @@ function TransportationTable(props) {
       { text: '7', value: 7 },
       { text: '10', value: 10 },
       { text: '15', value: 15 },
-      { text: 'All', value: props.list.length }
     ]
   };
 
@@ -83,14 +96,14 @@ function TransportationTable(props) {
       <div style={{ width: '1000px', border: 'solid black 5px'}}>
         <BootstrapTable
           keyField="id"
-          data={props.list}
+          data={updatedList}
           columns={columns}
           pagination={paginationFactory(options)}
           selectRow={ selectRow }
         />
       </div>
 
-      <GoogleMap/>
+      <GoogleMapForTransportation/>
     </div>
   );
 }

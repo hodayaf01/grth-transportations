@@ -89,6 +89,7 @@
     "react-bootstrap-table2-paginator": "^2.1.2",
     "react-dom": "16.8.6",
     "react-geocode": "^0.2.2",
+    "react-google-maps": "^9.4.5",
     "react-helmet": "6.0.0-beta",
     "react-intl": "2.8.0",
     "react-redux": "7.0.2",
