@@ -15,20 +15,20 @@ export function App() {
 
   return (
     <div style={{ marginLeft :'20px'}}>
-      <Link to="/">Home</Link><br/>
+      {/* <Link to="/">Login</Link><br/>
       <Link to="/transportaionList"> Trasportaion List </Link><br/>
-      <Link to="/addTrasportaion"> Add Trasportaion</Link><br/> 
-      <Link to="/Login"> Login</Link><br/> 
+      <Link to="/addTrasportaion"> Add Trasportaion</Link><br/>  */}
+      {/* <Link to="/Login"> Login</Link><br/>  */}
 
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={LoginPage} />
         <Route
           exact
           path="/transportaionList"
           component={TrasportationListPage}
         />
         <Route exact path="/addTrasportaion" component={AddTrasportaionPage} />
-        <Route exact path="/Login" component={LoginPage} />
+        {/* <Route exact path="/Login" component={LoginPage} /> */}
         <Route component={NotFoundPage} />
       </Switch>
     </div>

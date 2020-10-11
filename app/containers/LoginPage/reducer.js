@@ -3,8 +3,7 @@ import produce from 'immer';
 import { IS_EXIST_USER_SUCCESS, IS_EXIST_USER_GET_ERROR } from './constants';
 
 export const initialState = {
-  isExistUser: false,
-  userName: '',
+  user: true,
 };
 
 const loginPageReducer = (state = initialState, action) =>
@@ -12,8 +11,12 @@ const loginPageReducer = (state = initialState, action) =>
     switch (action.type) {
 
       case IS_EXIST_USER_SUCCESS:
-        draft.isExistUser = action.isExistUser ? true : false;
-        draft.userName = "Hodaya";
+        draft.user = action.user;
+        if(draft.user!==false) {
+          localStorage.setItem('userName', JSON.stringify(draft.user.name));
+          window.open("/transportaionList", "_self");
+        }
+        else{alert("password is incorrect");}
         break;
       
       case IS_EXIST_USER_GET_ERROR:

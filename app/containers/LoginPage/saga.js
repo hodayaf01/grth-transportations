@@ -17,8 +17,8 @@ export function* getIsExistUser(action){
     body: JSON.stringify(data),
   };
   try{
-    const isExistUser = yield call(request, requestURL, options);
-    yield put(getIsExistUserSuccess(isExistUser));
+    const user = yield call(request, requestURL, options);
+    yield put(getIsExistUserSuccess(user));
   }
   catch(error){
     console.log("error in exist user");

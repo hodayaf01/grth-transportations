@@ -6,7 +6,7 @@ const selectLoginPageDomain = state => state.loginPage || initialState;
 const makeSelectIsExistUser = () =>
   createSelector(
     selectLoginPageDomain,
-    loginPage => loginPage.isExistUser,
+    loginPage => loginPage.user,
   );
 
 export { selectLoginPageDomain, makeSelectIsExistUser };

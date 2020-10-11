@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import {makeSelectIsExistUser} from './selectors';
@@ -12,7 +13,11 @@ import {getIsExistUser} from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
-export function LoginPage({onSubmitConfirmPass, isExistUser}) {
+
+import 'reactjs-popup/dist/index.css';
+
+export function LoginPage({onSubmitConfirmPass, user}) {
+
   useInjectReducer({ key: 'loginPage', reducer });
   useInjectSaga({ key: 'loginPage', saga });
 
@@ -24,27 +29,25 @@ export function LoginPage({onSubmitConfirmPass, isExistUser}) {
 
   const onConfirm = () => {
     onSubmitConfirmPass(pass);
-  };
+  }
 
   return (
     <div>
-      <h1>enter your password</h1>
+      <h1>Wellcome! please enter your private password and submit</h1>
       <input type="text" value={pass} onChange={onChangePass}></input>
       <button type="submit" onClick={onConfirm}>confirm</button>
-      {isExistUser && <span>follow this link :</span>}
-      {!isExistUser && <span>Access Denide</span>}
-
     </div>
   );
 }
 
 LoginPage.propTypes = {
-  isExistUser: PropTypes.bool,
+  makeSelectIsExistUser: PropTypes.bool,
   onSubmitConfirmPass: PropTypes.func,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
-  isExistUser: makeSelectIsExistUser(),
+  user: makeSelectIsExistUser(),
 });
 
 function mapDispatchToProps(dispatch) {
