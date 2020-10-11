@@ -1,19 +1,16 @@
 import produce from 'immer';
-import { DEFAULT_ACTION, CHANGE_TRANSPORTATION_NUMBER, GET_NEW_TRANSPORTATION_ID, GET_NEW_TRANSPORTATION_ID_SUCCESS, GET_NEW_TRANSPORTATION_ID_ERROR } from './constants';
-
+import { DEFAULT_ACTION, GET_NEW_TRANSPORTATION_ID, GET_NEW_TRANSPORTATION_ID_SUCCESS, GET_NEW_TRANSPORTATION_ID_ERROR,
+  ADD_NEW_TRANSPORTATION_SUCCESS } from './constants';
 export const initialState = {
-  transportationNumber: '',
   newTransportation:{
-    id: 0,
     error: false,
+
     customerId: '',
     name:'',
-    address:'',
-    fromLatitude:'',
-    fromLongitude:'',
-    toLatitude:'',
-    toLongitude:'',
-    isArrived: false,
+    fromLat:'',
+    fromLng:'',
+    toLat:'',
+    toLng:'',
   }
 };
 
@@ -24,10 +21,6 @@ const addTrasportaionPageReducer = (state = initialState, action) =>
       case DEFAULT_ACTION:
         break;
 
-      case CHANGE_TRANSPORTATION_NUMBER:
-        draft.transportationNumber = action.number;
-        break;
-      
       case GET_NEW_TRANSPORTATION_ID:
         draft.newTransportation.error = false;
         break;
@@ -42,6 +35,11 @@ const addTrasportaionPageReducer = (state = initialState, action) =>
         draft.newTransportation.error = true;
         break;
 
+      case ADD_NEW_TRANSPORTATION_SUCCESS:
+        debugger;
+        window.open("/transportaionList", "_self");
+        break
+      
       default:
         break;
     }

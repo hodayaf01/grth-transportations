@@ -10,12 +10,6 @@ const makeSelectAddTrasportaionPage = () =>
     substate => substate,
   );
 
-const makeSelectTrasportationNumber = () =>
-  createSelector(
-    selectAddTrasportaionPageDomain,
-    addTrasportaionPage => addTrasportaionPage.transportationNumber,
-  );
-
 const makeSelectNewTrasportationIdError = () =>
   createSelector(
     selectAddTrasportaionPageDomain,
@@ -31,7 +25,6 @@ const makeSelectNewTrasportationId = () =>
 
 export {
   makeSelectAddTrasportaionPage,
-  makeSelectTrasportationNumber,
   makeSelectNewTrasportationId,
   makeSelectNewTrasportationIdError,
 };

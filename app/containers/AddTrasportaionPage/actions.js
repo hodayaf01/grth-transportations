@@ -1,15 +1,14 @@
-import { DEFAULT_ACTION, CHANGE_TRANSPORTATION_NUMBER, GET_NEW_TRANSPORTATION_ID, GET_NEW_TRANSPORTATION_ID_SUCCESS, GET_NEW_TRANSPORTATION_ID_ERROR } from './constants';
+import { 
+  DEFAULT_ACTION, 
+  GET_NEW_TRANSPORTATION_ID, 
+  GET_NEW_TRANSPORTATION_ID_SUCCESS, 
+  GET_NEW_TRANSPORTATION_ID_ERROR, 
+  ADD_NEW_TRANSPORTATION,
+  ADD_NEW_TRANSPORTATION_SUCCESS } from './constants';
 
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
-  };
-};
-
-export function changetransportationNumber(number) {
-  return {
-    type: CHANGE_TRANSPORTATION_NUMBER,
-    number
   };
 };
 
@@ -30,5 +29,19 @@ export function getNewTransportationIdError(error){
   return {
     type: GET_NEW_TRANSPORTATION_ID_ERROR,   
     error 
+  };
+};
+
+export function addNewTransportation(newTransportation){
+  return {
+    type: ADD_NEW_TRANSPORTATION,   
+    newTransportation 
+  };
+};
+
+export function addNewTransportationSuccess(newTransportation){
+  return {
+    type: ADD_NEW_TRANSPORTATION_SUCCESS,   
+    newTransportation 
   };
 };
