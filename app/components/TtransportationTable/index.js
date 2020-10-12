@@ -9,8 +9,8 @@ import './transportationTable.scss';
 
 function TransportationTable(props) {
 
-  const [selectedRow, setSelectedRow] = useState(null);
-  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [selectedRow, setSelectedRow] = useState('');
+  const [selectedAddress, setSelectedAddress] = useState('');
 
   function statusFormatter(row) {
     if (row)
@@ -33,8 +33,8 @@ function TransportationTable(props) {
 
   const handleOnSelect= (row, isSelect) => {
     if (isSelect) {
-      setSelectedRow(row);
-      console.log(row.from);
+      const {list} = props;
+      setSelectedRow(list[row.id]);
     }
   };
 
@@ -58,7 +58,7 @@ function TransportationTable(props) {
 
   const columns = [
     { dataField: "id", text: "Transportation Number", align: 'center' },
-    { dataField: "customerId", text: "Customer Number" },
+    { dataField: "customerId", text: "Customer Number", align: 'center' },
     { dataField: "name", text: "Name" },
     { dataField: "from", text: "From" },
     { dataField: "to", text: "To" },
@@ -102,8 +102,7 @@ function TransportationTable(props) {
           selectRow={ selectRow }
         />
       </div>
-
-      <GoogleMapForTransportation/>
+      { selectedRow && <GoogleMapForTransportation row={selectedRow}/>}
     </div>
   );
 }
