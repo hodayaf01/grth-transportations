@@ -10,7 +10,7 @@ function Header(){
       <ul>
         <li className="item"><a  href="/transportaionList">Transportation List</a></li>
         <li  className="item"><a  href="/addTrasportaion">Add new Transportation</a></li>
-        <li className="item LoggedName"><a href="/">Hi {JSON.parse(localStorage.getItem('userName'))}</a></li>
+        <li className="item LoggedName"><a href="/">Hi {JSON.parse(localStorage.getItem('userName'))} - Logout</a></li>
       </ul>
     </div>
   );
