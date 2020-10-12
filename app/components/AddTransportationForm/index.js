@@ -18,19 +18,11 @@ class AddTransportationForm extends React.Component{
     }
   }
 
-  render(){
-    const {newId, submitAddNewTransportation} = this.props;
+  componentDidUpdate(){
+    const {submitAddNewTransportation} = this.props;
 
-    const onCustomerIdChanged = (event) => this.setState({customerId:event.target.value }) 
-    const onNameChanged = (event) => this.setState({name: event.target.value})
-    const onFromChanged = (event) => this.setState({from: event.target.value})
-    const onToChanged = (event) => this.setState({to: event.target.value})
-
-    const onSubmitAddForm = () => {
-
-      getAddress(this.state.from, 'from');
-      getAddress(this.state.to, 'to');
-
+    const {fromlat, fromlng, tolat, tolng} = this.state
+    if(fromlat>0 && fromlng>0 && tolat>0 && tolng>0){
       const tempTrans = {
         customerId: this.state.customerId,
         name: this.state.name,
@@ -40,8 +32,21 @@ class AddTransportationForm extends React.Component{
         tolng: this.state.tolng
       };
       submitAddNewTransportation(tempTrans);
-    };
+    }
+  };
 
+  render(){
+    const {newId, submitAddNewTransportation} = this.props;
+
+    const onCustomerIdChanged = (event) => this.setState({customerId:event.target.value }) 
+    const onNameChanged = (event) => this.setState({name: event.target.value})
+    const onFromChanged = (event) => this.setState({from: event.target.value})
+    const onToChanged = (event) => this.setState({to: event.target.value})
+
+    const onSubmitAddForm = () => {
+      getAddress(this.state.from, 'from');
+      getAddress(this.state.to, 'to');
+    };
 
     const getAddress = (address, type) => {
       Geocode.setApiKey("AIzaSyBp92tTnTQgEpN230RfIsFcPW73YDyC1sM");
