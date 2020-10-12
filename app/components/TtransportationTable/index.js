@@ -5,6 +5,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import Geocode from "react-geocode";
 import GoogleMapForTransportation from '../GoogleMap';
+import './transportationTable.scss';
 
 function TransportationTable(props) {
 
@@ -23,8 +24,8 @@ function TransportationTable(props) {
       id: item.id,
       customerId: item.customerId,
       name: item.name,
-      from: `${item.fromLatitude}  ${item.fromLongitude}` ,
-      to: `${item.toLatitude}  ${item.toLongitude}`,
+      from: `${item.fromLatitude} / ${item.fromLongitude}` ,
+      to: `${item.toLatitude} / ${item.toLongitude}`,
       isArrived: item.isArrived
     }
     updatedList.push(newItem);
@@ -33,7 +34,7 @@ function TransportationTable(props) {
   const handleOnSelect= (row, isSelect) => {
     if (isSelect) {
       setSelectedRow(row);
-      console.log(row.fromLatitude);
+      console.log(row.from);
     }
   };
 
@@ -75,10 +76,9 @@ function TransportationTable(props) {
     lastPageTitle: 'Last page',
     showTotal: true,
     sizePerPageList: [
-      { text: '5', value: 5 },
       { text: '7', value: 7 },
       { text: '10', value: 10 },
-      { text: '15', value: 15 },
+      { text: '15', value: 15 }
     ]
   };
 
@@ -93,7 +93,7 @@ function TransportationTable(props) {
     <div>
       <button type='button' onClick={showAddress}>show address</button>
       {selectedAddress && <div>{selectedAddress}</div>}
-      <div style={{ width: '1000px', border: 'solid black 5px'}}>
+      <div className="containTable" >
         <BootstrapTable
           keyField="id"
           data={updatedList}

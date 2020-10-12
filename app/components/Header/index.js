@@ -1,6 +1,6 @@
 import React from "react";
 
-import './index.scss';
+import './header.scss';
 
 
 function Header(){
@@ -8,9 +8,9 @@ function Header(){
   return (
     <div>
       <ul>
-        <li><a  href="/transportaionList">Transportation List</a></li>
-        <li><a  href="/addTrasportaion">Add new Transportation</a></li>
-        <li className="LoggedName"><a href="/">Hi {JSON.parse(localStorage.getItem('userName'))}</a></li>
+        <li className="item"><a  href="/transportaionList">Transportation List</a></li>
+        <li  className="item"><a  href="/addTrasportaion">Add new Transportation</a></li>
+        <li className="item LoggedName"><a href="/">Hi {JSON.parse(localStorage.getItem('userName'))}</a></li>
       </ul>
     </div>
   );

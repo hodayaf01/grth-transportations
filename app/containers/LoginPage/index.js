@@ -12,8 +12,8 @@ import {makeSelectIsExistUser} from './selectors';
 import {getIsExistUser} from './actions';
 import reducer from './reducer';
 import saga from './saga';
-
-
+import LoginImg from '../../images/LoginImg.png';
+import './index.scss';
 import 'reactjs-popup/dist/index.css';
 
 export function LoginPage({onSubmitConfirmPass, user}) {
@@ -32,10 +32,13 @@ export function LoginPage({onSubmitConfirmPass, user}) {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Wellcome! please enter your private password and submit</h1>
-      <input type="text" value={pass} onChange={onChangePass}></input>
+      <img alt="Avatar" src={LoginImg} className="avatar"/>
+      <label><b>Password</b></label>
+      <input type="text" value={pass} onChange={onChangePass} placeholder="Password" required></input>
       <button type="submit" onClick={onConfirm}>confirm</button>
+       
     </div>
   );
 }
