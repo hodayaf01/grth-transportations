@@ -1,5 +1,5 @@
-import { createStructuredSelector } from 'reselect';
 import React, {useEffect, memo, useState} from 'react';
+import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -13,25 +13,21 @@ import reducer from './reducer';
 import saga from './saga';
 import { makeSelectTrasportationsList, makeSelectLoading, makeSelectError } from './selectors'
 
-export function TrasportationListPage( transportaionList, loading, error, onLoadTransportations ) {
+export function TrasportationListPage( {transportaionList, loading, error, onLoadTransportations }) {
 
   useInjectReducer({ key: 'trasportationListPage', reducer });
   useInjectSaga({ key: 'trasportationListPage', saga });
 
-  const [userName, setUserName] = useState();
-
   useEffect( ()=> {
-    setUserName(JSON.parse(localStorage.getItem('userName')));
     if( !transportaionList ) onLoadTransportations();
   }, []);
 
   return (
     <div>
       <Header/>
-      {loading === true && <div className="loading">loading...</div>}
+      {loading && <div className="loading">loading...</div>}
       {error && <div className="error">error accured</div>}
-
-      <TransportationTable list = {transportaionList.transportaionList}/>
+      <TransportationTable list = {transportaionList}/>
     </div>
   );
 }

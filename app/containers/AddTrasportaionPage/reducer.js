@@ -4,7 +4,7 @@ import { DEFAULT_ACTION, GET_NEW_TRANSPORTATION_ID, GET_NEW_TRANSPORTATION_ID_SU
 export const initialState = {
   newTransportation:{
     error: false,
-
+    id:0,
     customerId: '',
     name:'',
     fromLat:'',
@@ -36,7 +36,6 @@ const addTrasportaionPageReducer = (state = initialState, action) =>
         break;
 
       case ADD_NEW_TRANSPORTATION_SUCCESS:
-        debugger;
         window.open("/transportaionList", "_self");
         break
       

@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import request from 'utils/request';
 import { LOAD_TRANSPORTATIONS } from './constants';
 import { transpotrationLoaded, transpotrationLoadingError } from './actions';

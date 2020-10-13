@@ -6,7 +6,7 @@ import { getNewTransportationIdSuccess, getNewTransportationIdError, addNewTrans
 
 const baseUrl = "/api";
 
-export function* getNewTransportationId(){
+export function* getNewTransportationID(){
   const requestURL = `${baseUrl}/getNewTransportationId`;
   try{
     const newId = yield call(request, requestURL);
@@ -43,6 +43,6 @@ export function* addNewTransportation(action){
     console.log(`${err} error in add transportation`);  }
 }
 export default function* getNewTransportationIdSaga() {
-  yield (GET_NEW_TRANSPORTATION_ID, getNewTransportationId);
+  yield takeEvery(GET_NEW_TRANSPORTATION_ID, getNewTransportationID);
   yield takeEvery (ADD_NEW_TRANSPORTATION, addNewTransportation);
 }

@@ -3,7 +3,6 @@ import Popup from 'reactjs-popup';
 
 import './index.scss';
 
-
 function AddressPopup() {
   const [seen, setSeen] = useState(true);
 
@@ -20,12 +19,10 @@ function AddressPopup() {
     >
       <div className="modal">
         <button className="close" type="button" onClick={togglePop}> &times; </button>
-        {/* <a className="close" onClick={togglePop}> &times; </a> */}
       </div>
       <div className="try">Popup content here !!</div>
     </Popup>
   );
 }
-
 
 export default (AddressPopup);

@@ -1,7 +1,6 @@
 import React from "react";
 
-import './header.scss';
-
+import './index.scss';
 
 function Header(){
 
@@ -15,4 +14,5 @@ function Header(){
     </div>
   );
 }
+
 export default Header;

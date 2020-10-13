@@ -16,7 +16,7 @@ import LoginImg from '../../images/LoginImg.png';
 import './index.scss';
 import 'reactjs-popup/dist/index.css';
 
-export function LoginPage({onSubmitConfirmPass, user}) {
+export function LoginPage({onSubmitConfirmPass, /* user */}) {
 
   useInjectReducer({ key: 'loginPage', reducer });
   useInjectSaga({ key: 'loginPage', saga });
@@ -36,9 +36,8 @@ export function LoginPage({onSubmitConfirmPass, user}) {
       <h1>Wellcome! please enter your private password and submit</h1>
       <img alt="Avatar" src={LoginImg} className="avatar"/>
       <label><b>Password</b></label>
-      <input type="text" value={pass} onChange={onChangePass} placeholder="Password" required></input>
+      <input type="password" value={pass} onChange={onChangePass} placeholder="Password" required></input>
       <button type="submit" onClick={onConfirm}>confirm</button>
-       
     </div>
   );
 }
@@ -46,11 +45,11 @@ export function LoginPage({onSubmitConfirmPass, user}) {
 LoginPage.propTypes = {
   makeSelectIsExistUser: PropTypes.bool,
   onSubmitConfirmPass: PropTypes.func,
-  user: PropTypes.object,
+  // user: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
-  user: makeSelectIsExistUser(),
+  // user: makeSelectIsExistUser(),
 });
 
 function mapDispatchToProps(dispatch) {

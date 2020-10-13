@@ -20,6 +20,7 @@ const transportationsListReducer = (state = initialState, action) =>
 
       case LOAD_TRANSPORTATIONS_SUCCESS:
         draft.loading = false;
+        draft.error = false;
         draft.list = action.transportations;
         break;
 

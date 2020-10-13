@@ -3,56 +3,39 @@ import PropTypes from 'prop-types';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import Geocode from "react-geocode";
 import GoogleMapForTransportation from '../GoogleMap';
-import './transportationTable.scss';
+import './index.scss';
 
 function TransportationTable(props) {
 
   const [selectedRow, setSelectedRow] = useState('');
-  const [selectedAddress, setSelectedAddress] = useState('');
 
   function statusFormatter(row) {
-    if (row)
-      return "delivered";
-    return "on the way";
+    return row ? "delivered" : "on the way";
   };
 
-  const updatedList = [];
-  Array.prototype.forEach.call(props.list, item => {
-    const newItem = {
-      id: item.id,
-      customerId: item.customerId,
-      name: item.name,
-      from: `${item.fromLatitude} / ${item.fromLongitude}` ,
-      to: `${item.toLatitude} / ${item.toLongitude}`,
-      isArrived: item.isArrived
+  function getUpdatedList() {
+    const updatedList = [];
+    if (props.list) {
+      props.list.forEach(item => {
+        const newItem = {
+          id: item.id,
+          customerId: item.customerId,
+          name: item.name,
+          from: `${item.fromLatitude} / ${item.fromLongitude}` ,
+          to: `${item.toLatitude} / ${item.toLongitude}`,
+          isArrived: item.isArrived
+        }
+        updatedList.push(newItem);
+      })
     }
-    updatedList.push(newItem);
-  })
+    return updatedList;
+  };
 
   const handleOnSelect= (row, isSelect) => {
     if (isSelect) {
       const {list} = props;
       setSelectedRow(list[row.id]);
-    }
-  };
-
-  const showAddress = () => {
-    if(selectedRow!=null){
-      Geocode.setApiKey("AIzaSyBp92tTnTQgEpN230RfIsFcPW73YDyC1sM");
-      Geocode.setLanguage("en");
-      Geocode.setRegion("es");
-      Geocode.enableDebug();
-      Geocode.fromLatLng(selectedRow.fromLatitude, selectedRow.fromLongitude).then(
-        response => {
-          const address = response.results[0].formatted_address;
-          setSelectedAddress(address);
-        },
-        error => {
-          console.error(error);
-        }
-      );
     }
   };
 
@@ -91,18 +74,17 @@ function TransportationTable(props) {
 
   return (
     <div>
-      <button type='button' onClick={showAddress}>show address</button>
-      {selectedAddress && <div>{selectedAddress}</div>}
       <div className="containTable" >
         <BootstrapTable
           keyField="id"
-          data={updatedList}
+          data={getUpdatedList()}
           columns={columns}
           pagination={paginationFactory(options)}
           selectRow={ selectRow }
         />
       </div>
       { selectedRow && <GoogleMapForTransportation row={selectedRow}/>}
+
     </div>
   );
 }
@@ -112,6 +94,4 @@ TransportationTable.propTypes = {
   text: PropTypes.object,
 };
 
-
 export default (TransportationTable);
-

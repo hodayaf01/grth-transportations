@@ -3,7 +3,6 @@ import { initialState } from './reducer';
 
 const selectAddTrasportaionPageDomain = state => state.addTrasportaionPage || initialState;
 
-
 const makeSelectAddTrasportaionPage = () =>
   createSelector(
     selectAddTrasportaionPageDomain,
@@ -21,7 +20,6 @@ const makeSelectNewTrasportationId = () =>
     selectAddTrasportaionPageDomain,
     addTrasportaionPage => addTrasportaionPage.newTransportation.id,
   );
-
 
 export {
   makeSelectAddTrasportaionPage,

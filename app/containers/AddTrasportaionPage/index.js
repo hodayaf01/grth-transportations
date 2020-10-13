@@ -1,4 +1,4 @@
-import React, { memo, useEffect,   } from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -18,11 +18,10 @@ export function AddTrasportaionPage({onLoadAddTransportation, submitAddNewTransp
   useInjectReducer({ key: 'addTrasportaionPage', reducer });
   useInjectSaga({ key: 'addTrasportaionPage', saga });
 
-  const stransportationFormRef =  React.createRef();;
+  const stransportationFormRef =  React.createRef();
 
   useEffect(() => {
     onLoadAddTransportation();
-    
   });
 
   return (
