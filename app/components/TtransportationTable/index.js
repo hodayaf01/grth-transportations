@@ -1,6 +1,5 @@
 import React, { useState }  from 'react';
 import PropTypes from 'prop-types';
-
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import GoogleMapForTransportation from '../GoogleMap';
@@ -84,7 +83,6 @@ function TransportationTable(props) {
         />
       </div>
       { selectedRow && <GoogleMapForTransportation row={selectedRow}/>}
-
     </div>
   );
 }

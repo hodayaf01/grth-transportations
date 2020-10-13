@@ -14,6 +14,7 @@ class AddTransportationForm extends React.Component{
       tolng: '',
       from: '',
       to:'',
+      error : false,
     }
   }
 
@@ -50,8 +51,9 @@ class AddTransportationForm extends React.Component{
       getAddress(to, 'to');
     };
 
+    if(this.state.error)
+      throw new Error();
     const getAddress = (address, type) => {
-      debugger;
       Geocode.setApiKey("AIzaSyBp92tTnTQgEpN230RfIsFcPW73YDyC1sM");
       Geocode.enableDebug();
       Geocode.fromAddress(address).then(
@@ -63,7 +65,8 @@ class AddTransportationForm extends React.Component{
           }
         },
         error => {
-          alert("provided address is invalid");
+          this.setState({error: true});
+          // alert("provided address is invalid");
         }
       );    
     };

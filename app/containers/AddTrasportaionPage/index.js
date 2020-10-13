@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import AddTransportationForm from '../../components/AddTransportationForm';
+import ErrorBoundary from '../../components/ErrorBoundary';
 import { addNewTransportation, getNewTransportationId } from './actions';
 import Header from '../../components/Header';
 import reducer from './reducer';
@@ -22,14 +23,20 @@ export function AddTrasportaionPage({onLoadAddTransportation, submitAddNewTransp
 
   useEffect(() => {
     onLoadAddTransportation();
+    // check ref
+    const form = stransportationFormRef.current;
+    console.log("add ref");
+    console.log(form.state);
   });
 
   return (
-    <div>
+    <>
       <Header/>
       {error && <div className="error">error accured</div>}
-      <AddTransportationForm newId={newId} submitAddNewTransportation={submitAddNewTransportation} ref={stransportationFormRef} />
-    </div>
+      <ErrorBoundary>
+        <AddTransportationForm newId={newId} submitAddNewTransportation={submitAddNewTransportation} ref={stransportationFormRef} />
+      </ErrorBoundary>
+    </>
   );
 }
 
