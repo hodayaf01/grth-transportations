@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import GoogleMapForTransportation from '../GoogleMap';
+import {DELIVERED, ON_THE_WAY, TRANSPORTATION_NUMBER, CUSTOMER_NUMBER, NAME, FROM, TO, STATUS} from '../../Common/consts';
 import './index.scss';
 
 function TransportationTable(props) {
@@ -10,7 +11,7 @@ function TransportationTable(props) {
   const [selectedRow, setSelectedRow] = useState('');
 
   function statusFormatter(row) {
-    return row ? "delivered" : "on the way";
+    return row ? DELIVERED : ON_THE_WAY;
   };
 
   function getUpdatedList() {
@@ -39,12 +40,12 @@ function TransportationTable(props) {
   };
 
   const columns = [
-    { dataField: "id", text: "Transportation Number", align: 'center' },
-    { dataField: "customerId", text: "Customer Number", align: 'center' },
-    { dataField: "name", text: "Name" },
-    { dataField: "from", text: "From" },
-    { dataField: "to", text: "To" },
-    { dataField: "isArrived", text: "Status", formatter: statusFormatter },
+    { dataField: "id", text: TRANSPORTATION_NUMBER, align: 'center' },
+    { dataField: "customerId", text: CUSTOMER_NUMBER, align: 'center' },
+    { dataField: "name", text: NAME },
+    { dataField: "from", text: FROM },
+    { dataField: "to", text: TO },
+    { dataField: "isArrived", text: STATUS, formatter: statusFormatter },
   ];
 
   const options = {

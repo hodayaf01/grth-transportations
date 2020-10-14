@@ -1,5 +1,6 @@
 import React from 'react';
 import Geocode from "react-geocode";
+import {FROM, TO, PROVIDED_DATA_IS_IVALID, API_KRY} from '../../Common/consts';
 import './index.scss';
 
 class AddTransportationForm extends React.Component{
@@ -47,26 +48,27 @@ class AddTransportationForm extends React.Component{
     const {customerId, name, from , to} = this.state
 
     const onSubmitAddForm = () => {
-      getAddress(from, 'from');
-      getAddress(to, 'to');
+      getAddress(from, FROM);
+      getAddress(to, TO);
     };
 
     if(this.state.error)
       throw new Error();
+    
     const getAddress = (address, type) => {
-      Geocode.setApiKey("AIzaSyBp92tTnTQgEpN230RfIsFcPW73YDyC1sM");
+      Geocode.setApiKey(API_KRY);
       Geocode.enableDebug();
       Geocode.fromAddress(address).then(
         response => {
           if(response.status === 'OK'){
             const { lat, lng } = response.results[0].geometry.location;
-            if(type === 'from') {this.setState({fromlat: lat, fromlng: lng})}
+            if(type === FROM) {this.setState({fromlat: lat, fromlng: lng})}
             else {this.setState({tolat: lat, tolng: lng})}
           }
         },
         error => {
           this.setState({error: true});
-          // alert("provided address is invalid");
+          // alert(PROVIDED_DATA_IS_IVALID);
         }
       );    
     };
