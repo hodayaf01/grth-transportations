@@ -2,7 +2,7 @@ import React, { useState }  from 'react';
 import PropTypes from 'prop-types';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import GoogleMapForTransportation from '../GoogleMap';
+import ReactGoogleMap from '../ReactGoogleMap';
 import {DELIVERED, ON_THE_WAY, TRANSPORTATION_NUMBER, CUSTOMER_NUMBER, NAME, FROM, TO, STATUS} from '../../Common/consts';
 import './index.scss';
 
@@ -83,7 +83,8 @@ function TransportationTable(props) {
           selectRow={ selectRow }
         />
       </div>
-      { selectedRow && <GoogleMapForTransportation row={selectedRow}/>}
+      { selectedRow && <ReactGoogleMap row={selectedRow}/> }
+
     </div>
   );
 }
