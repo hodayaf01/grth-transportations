@@ -1,5 +1,6 @@
 import React from 'react';
 import {withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } from "react-google-maps";
+import {GOOGLE_MAP_URL} from '../../Common/consts';
 const { compose, withProps, lifecycle } = require("recompose");
 
 class ReactGoogleMap extends React.Component{
@@ -16,7 +17,7 @@ class ReactGoogleMap extends React.Component{
   
     const MapWithADirectionsRenderer3 = compose(
       withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDuFlqFYeLdRev7XbwK0GsPSWbrk4E9Xiw&v=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: GOOGLE_MAP_URL,
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `700px` }} />,
         mapElement: <div style={{ height: `100%` }} />,

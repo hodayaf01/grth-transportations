@@ -18,3 +18,4 @@ export const STATUS = 'Status';
 
 export const API_KRY = 'AIzaSyBp92tTnTQgEpN230RfIsFcPW73YDyC1sM';
 export const API_KEY_MAP = 'AIzaSyDuFlqFYeLdRev7XbwK0GsPSWbrk4E9Xiw';
+export const GOOGLE_MAP_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY_MAP}&v=3.exp&libraries=geometry,drawing,places`;
