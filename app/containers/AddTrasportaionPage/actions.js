@@ -1,16 +1,11 @@
 import { 
-  DEFAULT_ACTION, 
   GET_NEW_TRANSPORTATION_ID, 
   GET_NEW_TRANSPORTATION_ID_SUCCESS, 
   GET_NEW_TRANSPORTATION_ID_ERROR, 
   ADD_NEW_TRANSPORTATION,
-  ADD_NEW_TRANSPORTATION_SUCCESS } from './constants';
+  ADD_NEW_TRANSPORTATION_SUCCESS, 
+  ADD_NEW_TRANSPORTATION_ERROR } from './constants';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-};
 
 export function getNewTransportationId(){
   return {
@@ -43,5 +38,11 @@ export function addNewTransportationSuccess(newTransportation){
   return {
     type: ADD_NEW_TRANSPORTATION_SUCCESS,   
     newTransportation 
+  };
+};
+
+export function addNewTransportationError(){
+  return {
+    type: ADD_NEW_TRANSPORTATION_ERROR,
   };
 };

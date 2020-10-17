@@ -1,6 +1,6 @@
 import produce from 'immer';
 import { DEFAULT_ACTION, GET_NEW_TRANSPORTATION_ID, GET_NEW_TRANSPORTATION_ID_SUCCESS, GET_NEW_TRANSPORTATION_ID_ERROR,
-  ADD_NEW_TRANSPORTATION_SUCCESS } from './constants';
+  ADD_NEW_TRANSPORTATION_SUCCESS, ADD_NEW_TRANSPORTATION_ERROR } from './constants';
 export const initialState = {
   newTransportation:{
     error: false,
@@ -31,6 +31,7 @@ const addTrasportaionPageReducer = (state = initialState, action) =>
         break;
             
       case GET_NEW_TRANSPORTATION_ID_ERROR:
+      case ADD_NEW_TRANSPORTATION_ERROR:
         draft.newTransportation.id = 0;
         draft.newTransportation.error = true;
         break;

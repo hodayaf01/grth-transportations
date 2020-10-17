@@ -2,7 +2,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
 
 import { GET_NEW_TRANSPORTATION_ID, ADD_NEW_TRANSPORTATION } from './constants';
-import { getNewTransportationIdSuccess, getNewTransportationIdError, addNewTransportationSuccess } from './actions';
+import { getNewTransportationIdSuccess, getNewTransportationIdError, addNewTransportationSuccess, addNewTransportationError } from './actions';
 
 const baseUrl = "/api";
 
@@ -40,7 +40,7 @@ export function* addNewTransportation(action){
     yield put(addNewTransportationSuccess(newList));
   }
   catch(err){
-    console.log(`${err} error in add transportation`);  }
+    addNewTransportationError();  }
 }
 export default function* getNewTransportationIdSaga() {
   yield takeEvery(GET_NEW_TRANSPORTATION_ID, getNewTransportationID);

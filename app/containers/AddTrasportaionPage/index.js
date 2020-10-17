@@ -32,7 +32,7 @@ export function AddTrasportaionPage({onLoadAddTransportation, submitAddNewTransp
   return (
     <>
       <Header/>
-      {error && <div className="error">error accured</div>}
+      {error && <div className="error">Opps, Something went wrong, please try again later</div>}
       <ErrorBoundary>
         <AddTransportationForm newId={newId} submitAddNewTransportation={submitAddNewTransportation} ref={stransportationFormRef} />
       </ErrorBoundary>
