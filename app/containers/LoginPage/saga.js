@@ -2,7 +2,7 @@ import {  call, put, takeEvery  } from 'redux-saga/effects';
 import request from 'utils/request';
 
 import {IS_EXIST_USER} from './constants'
-import { getIsExistUserSuccess } from './actions';
+import { getIsExistUserSuccess, getIsExistUserError } from './actions';
 
 const baseUrl = "/api";
 
@@ -18,10 +18,17 @@ export function* getIsExistUser(action){
   };
   try{
     const user = yield call(request, requestURL, options);
-    yield put(getIsExistUserSuccess(user));
+    if(user) {
+      localStorage.setItem('userName', JSON.stringify(user.name));
+      window.open("/transportaionList", "_self");
+    }
+    else {
+      yield put(getIsExistUserSuccess());
+    }
+    
   }
   catch(error){
-    console.log("error in exist user");
+    getIsExistUserError(error);
   }
 }
 

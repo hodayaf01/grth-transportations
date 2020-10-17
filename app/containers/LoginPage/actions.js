@@ -1,5 +1,5 @@
 
-import { IS_EXIST_USER, IS_EXIST_USER_SUCCESS } from './constants';
+import { IS_EXIST_USER, IS_EXIST_USER_SUCCESS, IS_EXIST_USER_ERROR } from './constants';
 
 export function getIsExistUser(pass) {
   return {
@@ -8,9 +8,16 @@ export function getIsExistUser(pass) {
   };
 }
 
-export function getIsExistUserSuccess(user) {
+export function getIsExistUserSuccess() {
   return {
     type: IS_EXIST_USER_SUCCESS,
-    user
   };
 }
+
+export function getIsExistUserError(error) {
+  return {
+    type: IS_EXIST_USER_ERROR,
+    error
+  };
+}
+
