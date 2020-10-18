@@ -68,7 +68,6 @@ class AddTransportationForm extends React.Component{
         },
         error => {
           this.setState({error: true});
-          // alert(PROVIDED_DATA_IS_IVALID);
         }
       );    
     };

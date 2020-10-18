@@ -25,7 +25,6 @@ export function AddTrasportaionPage({onLoadAddTransportation, submitAddNewTransp
     onLoadAddTransportation();
     // check ref
     const form = stransportationFormRef.current;
-    console.log("add ref");
     console.log(form.state);
   });
 
